@@ -9,6 +9,8 @@
 [36;1mnote: [0mTarget dependency graph (11 targets)
 [1mGatherProvisioningInputs[0m
 [1mCreateBuildDescription[0m
+[1mBuild description signature: 4cf5a6d55e03db3918545ac95a9a1020[0m
+[1mBuild description path: /Backyard-Birds/Build/Intermediates.noindex/XCBuildData/4cf5a6d55e03db3918545ac95a9a1020.xcbuilddata[0m
 [[36mBackyardBirdsData[0m] [1mWrite Auxiliary File[0m BackyardBirdsData.modulemap
 [[36mLayeredArtworkLibrary_LayeredArtworkLibrary[0m] [1mWrite Auxiliary File[0m empty-LayeredArtworkLibrary_LayeredArtworkLibrary.plist
 [[36mLayeredArtworkLibrary_LayeredArtworkLibrary[0m] [1mCompile Asset Catalog[0m Assets.xcassets

@@ -309,6 +309,20 @@ struct CaptureGroupTests {
         #expect(SwiftTestingIssueArgumentCaptureGroup.regex.captureGroups(for: input) != nil)
     }
 
+    @Test func matchBuildDescriptionSignature() throws {
+        let input = "Build description signature: 9fa4c0953e5363f52431c6ed6a5047fc"
+        let groups = try #require(BuildDescriptionCaptureGroup.regex.captureGroups(for: input))
+        #expect(groups.count == 1)
+        #expect(groups[0] == "Build description signature: 9fa4c0953e5363f52431c6ed6a5047fc")
+    }
+
+    @Test func matchBuildDescriptionPath() throws {
+        let input = "Build description path: /Users/philip/Library/Developer/Xcode/DerivedData/Flinky-fuobgmkihpaygygtcxuzcywbirqm/Build/Intermediates.noindex/XCBuildData/a1853be313511008f04df33a6f3e66dc.xcbuilddata"
+        let groups = try #require(BuildDescriptionCaptureGroup.regex.captureGroups(for: input))
+        #expect(groups.count == 1)
+        #expect(groups[0] == input)
+    }
+
     @Test func matchBuildPhasePlumbing() throws {
         let inputs = [
             "ComputePackagePrebuildTargetDependencyGraph",

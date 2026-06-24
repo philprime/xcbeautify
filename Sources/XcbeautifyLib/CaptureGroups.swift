@@ -119,6 +119,20 @@ struct AnalyzeTargetCaptureGroup: TargetCaptureGroup {
     }
 }
 
+struct BuildDescriptionCaptureGroup: CaptureGroup {
+    static let outputType: OutputType = .task
+
+    static let regex = XCRegex(pattern: #"^(Build description (?:signature|path): .+)$"#)
+
+    let description: String
+
+    init?(groups: [String]) {
+        assert(groups.count == 1)
+        guard let description = groups[safe: 0] else { return nil }
+        self.description = description
+    }
+}
+
 struct BuildPhasePlumbingCaptureGroup: CaptureGroup {
     static let outputType: OutputType = .task
 

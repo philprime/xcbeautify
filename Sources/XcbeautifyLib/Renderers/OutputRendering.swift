@@ -19,6 +19,7 @@ protocol OutputRendering {
     var additionalLines: () -> String? { get }
 
     func formatAnalyze(group: AnalyzeCaptureGroup) -> String
+    func formatBuildDescription(group: BuildDescriptionCaptureGroup) -> String
     func formatBuildPhasePlumbing(group: BuildPhasePlumbingCaptureGroup) -> String
     func formatCheckDependencies() -> String
     func formatCleanRemove(group: CleanRemoveCaptureGroup) -> String
@@ -137,6 +138,10 @@ extension OutputRendering {
         let filename = group.filename
         let target = group.target
         return colored ? "[\(target.cyan())] \("Analyzing".bold()) \(filename)" : "[\(target)] Analyzing \(filename)"
+    }
+
+    func formatBuildDescription(group: BuildDescriptionCaptureGroup) -> String {
+        colored ? group.description.bold() : group.description
     }
 
     func formatBuildPhasePlumbing(group: BuildPhasePlumbingCaptureGroup) -> String {
