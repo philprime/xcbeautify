@@ -774,6 +774,20 @@ struct ExecutedWithSkippedCaptureGroup: ExecutedCaptureGroup {
     }
 }
 
+struct ExecuteExternalToolCaptureGroup: CaptureGroup {
+    static let outputType: OutputType = .task
+
+    static let regex = XCRegex(pattern: #"^ExecuteExternalTool (.+)$"#)
+
+    let command: String
+
+    init?(groups: [String]) {
+        assert(groups.count == 1)
+        guard let command = groups[safe: 0] else { return nil }
+        self.command = command
+    }
+}
+
 struct ExplicitDependencyCaptureGroup: CaptureGroup {
     static let outputType: OutputType = .task
 

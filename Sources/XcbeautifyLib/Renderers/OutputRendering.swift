@@ -47,6 +47,7 @@ protocol OutputRendering {
     func formatFatalErrorWithFilePath(group: FatalErrorWithFilePathCaptureGroup) -> String
     func formatExecutedWithoutSkipped(group: ExecutedWithoutSkippedCaptureGroup) -> String
     func formatExecutedWithSkipped(group: ExecutedWithSkippedCaptureGroup) -> String
+    func formatExecuteExternalTool(group: ExecuteExternalToolCaptureGroup) -> String
     func formatExplicitDependencyCaptureGroup(group: ExplicitDependencyCaptureGroup) -> String?
     func formatExtractAppIntents(group: ExtractAppIntentsMetadataCaptureGroup) -> String
     func formatFailingTest(group: FailingTestCaptureGroup) -> String
@@ -235,6 +236,10 @@ extension OutputRendering {
 
     func formatExecutedWithSkipped(group: ExecutedWithSkippedCaptureGroup) -> String {
         group.wholeResult
+    }
+
+    func formatExecuteExternalTool(group: ExecuteExternalToolCaptureGroup) -> String {
+        colored ? "\("Execute External Tool".bold()) \(group.command)" : "Execute External Tool \(group.command)"
     }
 
     func formatExplicitDependencyCaptureGroup(group: ExplicitDependencyCaptureGroup) -> String? {

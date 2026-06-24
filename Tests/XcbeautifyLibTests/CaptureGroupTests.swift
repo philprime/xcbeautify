@@ -323,6 +323,13 @@ struct CaptureGroupTests {
         #expect(groups[0] == input)
     }
 
+    @Test func matchExecuteExternalTool() throws {
+        let input = "ExecuteExternalTool /Applications/Xcode-26.5.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version"
+        let groups = try #require(ExecuteExternalToolCaptureGroup.regex.captureGroups(for: input))
+        #expect(groups.count == 1)
+        #expect(groups[0] == "/Applications/Xcode-26.5.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version")
+    }
+
     @Test func matchBuildPhasePlumbing() throws {
         let inputs = [
             "ComputePackagePrebuildTargetDependencyGraph",

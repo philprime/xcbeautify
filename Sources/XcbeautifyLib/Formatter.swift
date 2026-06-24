@@ -113,6 +113,8 @@ package struct Formatter {
             return renderer.formatExecutedWithoutSkipped(group: group)
         case let group as ExecutedWithSkippedCaptureGroup:
             return renderer.formatExecutedWithSkipped(group: group)
+        case let group as ExecuteExternalToolCaptureGroup:
+            return renderer.formatExecuteExternalTool(group: group)
         case let group as ExplicitDependencyCaptureGroup:
             return renderer.formatExplicitDependencyCaptureGroup(group: group)
         case let group as ExtractAppIntentsMetadataCaptureGroup:

@@ -49,6 +49,7 @@ package final class Parser {
         EmitSwiftModuleCaptureGroup.self,
         ExecutedWithoutSkippedCaptureGroup.self,
         ExecutedWithSkippedCaptureGroup.self,
+        ExecuteExternalToolCaptureGroup.self,
         ExplicitDependencyCaptureGroup.self,
         ExtractAppIntentsMetadataCaptureGroup.self,
         FailingTestCaptureGroup.self,
