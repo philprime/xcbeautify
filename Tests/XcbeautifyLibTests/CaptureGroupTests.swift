@@ -366,4 +366,13 @@ struct CaptureGroupTests {
         #expect(BuildPhasePlumbingCaptureGroup.regex.captureGroups(for: "ComputeTargetDependencyGraph extra text") == nil)
         #expect(BuildPhasePlumbingCaptureGroup.regex.captureGroups(for: "SomeOtherCommand") == nil)
     }
+
+    @Test func matchGenerateTAPI() throws {
+        let input = "GenerateTAPI /Users/philip/Library/Developer/Xcode/DerivedData/Build/Intermediates.noindex/SentryPrivate.framework/SentryPrivate.tbd (in target 'SentryPrivate' from project 'Sentry')"
+        let groups = try #require(GenerateTAPICaptureGroup.regex.captureGroups(for: input))
+        let captureGroup = try #require(GenerateTAPICaptureGroup(groups: groups))
+        #expect(captureGroup.path == "/Users/philip/Library/Developer/Xcode/DerivedData/Build/Intermediates.noindex/SentryPrivate.framework/SentryPrivate.tbd")
+        #expect(captureGroup.target == "SentryPrivate")
+        #expect(captureGroup.project == "Sentry")
+    }
 }

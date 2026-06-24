@@ -992,6 +992,24 @@ struct GenerateDSYMCaptureGroup: CaptureGroup {
     }
 }
 
+struct GenerateTAPICaptureGroup: CaptureGroup {
+    static let outputType: OutputType = .task
+
+    static let regex = XCRegex(pattern: #"^GenerateTAPI (.+) \(in target '(.+)' from project '(.+)'\)$"#)
+
+    let path: String
+    let target: String
+    let project: String
+
+    init?(groups: [String]) {
+        assert(groups.count == 3)
+        guard let path = groups[safe: 0], let target = groups[safe: 1], let project = groups[safe: 2] else { return nil }
+        self.path = path
+        self.target = target
+        self.project = project
+    }
+}
+
 struct GenericWarningCaptureGroup: CaptureGroup {
     static let outputType: OutputType = .warning
 

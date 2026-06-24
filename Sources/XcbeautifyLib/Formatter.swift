@@ -137,6 +137,8 @@ package struct Formatter {
             return renderer.formatCoverageReport(group: group)
         case let group as GenerateDSYMCaptureGroup:
             return renderer.formatGenerateDsym(group: group)
+        case let group as GenerateTAPICaptureGroup:
+            return renderer.formatGenerateTAPI(group: group)
         case let group as GenericWarningCaptureGroup:
             return renderer.formatWarning(group: group)
         case let group as LDErrorCaptureGroup:

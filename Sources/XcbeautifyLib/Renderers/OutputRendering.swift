@@ -56,6 +56,7 @@ protocol OutputRendering {
     func formatGenerateAssetSymbols(group: GenerateAssetSymbolsCaptureGroup) -> String
     func formatGenerateCoverageData(group: GenerateCoverageDataCaptureGroup) -> String
     func formatGenerateDsym(group: GenerateDSYMCaptureGroup) -> String
+    func formatGenerateTAPI(group: GenerateTAPICaptureGroup) -> String
     func formatLdWarning(group: LDWarningCaptureGroup) -> String
     func formatLibtool(group: LibtoolCaptureGroup) -> String
     func formatLinkerDuplicateSymbolsError(group: LinkerDuplicateSymbolsCaptureGroup) -> String
@@ -280,6 +281,12 @@ extension OutputRendering {
         let dsym = group.dsym
         let target = group.target
         return colored ? "[\(target.cyan())] \("Generating".bold()) \(dsym)" : "[\(target)] Generating \(dsym)"
+    }
+
+    func formatGenerateTAPI(group: GenerateTAPICaptureGroup) -> String {
+        let filename = URL(fileURLWithPath: group.path).lastPathComponent
+        let target = group.target
+        return colored ? "[\(target.cyan())] \("GenerateTAPI".bold()) \(filename)" : "[\(target)] GenerateTAPI \(filename)"
     }
 
     func formatLibtool(group: LibtoolCaptureGroup) -> String {

@@ -61,6 +61,7 @@ package final class Parser {
         GenerateCoverageDataCaptureGroup.self,
         GeneratedCoverageReportCaptureGroup.self,
         GenerateDSYMCaptureGroup.self,
+        GenerateTAPICaptureGroup.self,
         GenericWarningCaptureGroup.self,
         LDErrorCaptureGroup.self,
         LDWarningCaptureGroup.self,
