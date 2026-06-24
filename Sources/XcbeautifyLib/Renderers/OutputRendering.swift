@@ -19,6 +19,7 @@ protocol OutputRendering {
     var additionalLines: () -> String? { get }
 
     func formatAnalyze(group: AnalyzeCaptureGroup) -> String
+    func formatAppIntentsMetadataProcessor(group: AppIntentsMetadataProcessorCaptureGroup) -> String
     func formatBuildDescription(group: BuildDescriptionCaptureGroup) -> String
     func formatBuildPhasePlumbing(group: BuildPhasePlumbingCaptureGroup) -> String
     func formatCheckDependencies() -> String
@@ -145,6 +146,10 @@ extension OutputRendering {
         let filename = group.filename
         let target = group.target
         return colored ? "[\(target.cyan())] \("Analyzing".bold()) \(filename)" : "[\(target)] Analyzing \(filename)"
+    }
+
+    func formatAppIntentsMetadataProcessor(group: AppIntentsMetadataProcessorCaptureGroup) -> String {
+        colored ? "\("appintentsmetadataprocessor".bold()) \(group.message)" : "appintentsmetadataprocessor \(group.message)"
     }
 
     func formatBuildDescription(group: BuildDescriptionCaptureGroup) -> String {

@@ -367,6 +367,20 @@ struct CaptureGroupTests {
         #expect(BuildPhasePlumbingCaptureGroup.regex.captureGroups(for: "SomeOtherCommand") == nil)
     }
 
+    @Test func matchAppIntentsMetadataProcessor() throws {
+        let input = "2026-06-24 09:56:54.716 appintentsmetadataprocessor[29885:2549127] Starting appintentsmetadataprocessor export"
+        let groups = try #require(AppIntentsMetadataProcessorCaptureGroup.regex.captureGroups(for: input))
+        let captureGroup = try #require(AppIntentsMetadataProcessorCaptureGroup(groups: groups))
+        #expect(captureGroup.message == "Starting appintentsmetadataprocessor export")
+    }
+
+    @Test func matchAppIntentsMetadataProcessorExtracted() throws {
+        let input = "2026-06-24 09:56:54.740 appintentsmetadataprocessor[29885:2549127] Extracted no relevant App Intents symbols, skipping writing output"
+        let groups = try #require(AppIntentsMetadataProcessorCaptureGroup.regex.captureGroups(for: input))
+        let captureGroup = try #require(AppIntentsMetadataProcessorCaptureGroup(groups: groups))
+        #expect(captureGroup.message == "Extracted no relevant App Intents symbols, skipping writing output")
+    }
+
     @Test func matchCopySwiftLibs() throws {
         let input = "CopySwiftLibs /Users/philip/Library/Developer/Xcode/DerivedData/Flinky.build/Products/Debug-iphonesimulator/Flinky.app (in target 'Flinky' from project 'Flinky')"
         let groups = try #require(CopySwiftLibsCaptureGroup.regex.captureGroups(for: input))

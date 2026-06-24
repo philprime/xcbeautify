@@ -119,6 +119,19 @@ struct AnalyzeTargetCaptureGroup: TargetCaptureGroup {
     }
 }
 
+struct AppIntentsMetadataProcessorCaptureGroup: CaptureGroup {
+    static let outputType: OutputType = .task
+    static let regex = XCRegex(pattern: #"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+ appintentsmetadataprocessor\[\d+:\d+\] (.+)$"#)
+
+    let message: String
+
+    init?(groups: [String]) {
+        assert(groups.count == 1)
+        guard let message = groups[safe: 0] else { return nil }
+        self.message = message
+    }
+}
+
 struct BuildDescriptionCaptureGroup: CaptureGroup {
     static let outputType: OutputType = .task
 

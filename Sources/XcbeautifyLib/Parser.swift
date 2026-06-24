@@ -16,6 +16,7 @@ package final class Parser {
         AggregateTargetCaptureGroup.self,
         AnalyzeCaptureGroup.self,
         AnalyzeTargetCaptureGroup.self,
+        AppIntentsMetadataProcessorCaptureGroup.self,
         BuildDescriptionCaptureGroup.self,
         BuildPhasePlumbingCaptureGroup.self,
         BuildTargetCaptureGroup.self,
