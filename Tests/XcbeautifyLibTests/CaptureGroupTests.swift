@@ -367,6 +367,20 @@ struct CaptureGroupTests {
         #expect(BuildPhasePlumbingCaptureGroup.regex.captureGroups(for: "SomeOtherCommand") == nil)
     }
 
+    @Test func matchAppIntentsNLTrainingProcessor() throws {
+        let input = "2026-06-10 19:26:02.214 appintentsnltrainingprocessor[30845:1405280] Parsing options for appintentsnltrainingprocessor"
+        let groups = try #require(AppIntentsNLTrainingProcessorCaptureGroup.regex.captureGroups(for: input))
+        let captureGroup = try #require(AppIntentsNLTrainingProcessorCaptureGroup(groups: groups))
+        #expect(captureGroup.message == "Parsing options for appintentsnltrainingprocessor")
+    }
+
+    @Test func matchAppIntentsNLTrainingProcessorNoShortcuts() throws {
+        let input = "2026-06-10 19:26:02.215 appintentsnltrainingprocessor[30845:1405280] No AppShortcuts found - Skipping."
+        let groups = try #require(AppIntentsNLTrainingProcessorCaptureGroup.regex.captureGroups(for: input))
+        let captureGroup = try #require(AppIntentsNLTrainingProcessorCaptureGroup(groups: groups))
+        #expect(captureGroup.message == "No AppShortcuts found - Skipping.")
+    }
+
     @Test func matchAppIntentsMetadataProcessor() throws {
         let input = "2026-06-24 09:56:54.716 appintentsmetadataprocessor[29885:2549127] Starting appintentsmetadataprocessor export"
         let groups = try #require(AppIntentsMetadataProcessorCaptureGroup.regex.captureGroups(for: input))

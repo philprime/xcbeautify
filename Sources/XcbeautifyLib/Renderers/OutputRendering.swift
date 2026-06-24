@@ -20,6 +20,7 @@ protocol OutputRendering {
 
     func formatAnalyze(group: AnalyzeCaptureGroup) -> String
     func formatAppIntentsMetadataProcessor(group: AppIntentsMetadataProcessorCaptureGroup) -> String
+    func formatAppIntentsNLTrainingProcessor(group: AppIntentsNLTrainingProcessorCaptureGroup) -> String
     func formatBuildDescription(group: BuildDescriptionCaptureGroup) -> String
     func formatBuildPhasePlumbing(group: BuildPhasePlumbingCaptureGroup) -> String
     func formatCheckDependencies() -> String
@@ -150,6 +151,10 @@ extension OutputRendering {
 
     func formatAppIntentsMetadataProcessor(group: AppIntentsMetadataProcessorCaptureGroup) -> String {
         colored ? "\("appintentsmetadataprocessor".bold()) \(group.message)" : "appintentsmetadataprocessor \(group.message)"
+    }
+
+    func formatAppIntentsNLTrainingProcessor(group: AppIntentsNLTrainingProcessorCaptureGroup) -> String {
+        colored ? "\("appintentsnltrainingprocessor".bold()) \(group.message)" : "appintentsnltrainingprocessor \(group.message)"
     }
 
     func formatBuildDescription(group: BuildDescriptionCaptureGroup) -> String {
