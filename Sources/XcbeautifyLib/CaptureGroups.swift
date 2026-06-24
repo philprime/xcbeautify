@@ -214,6 +214,20 @@ struct ClangErrorCaptureGroup: ErrorCaptureGroup {
     }
 }
 
+struct ClangStatCacheCaptureGroup: CaptureGroup {
+    static let outputType: OutputType = .task
+
+    static let regex = XCRegex(pattern: #"^ClangStatCache (.+)$"#)
+
+    let command: String
+
+    init?(groups: [String]) {
+        assert(groups.count == 1)
+        guard let command = groups[safe: 0] else { return nil }
+        self.command = command
+    }
+}
+
 struct CleanRemoveCaptureGroup: CaptureGroup {
     static let outputType: OutputType = .task
 

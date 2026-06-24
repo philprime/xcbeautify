@@ -22,6 +22,7 @@ package final class Parser {
         CheckDependenciesCaptureGroup.self,
         CheckDependenciesErrorsCaptureGroup.self,
         ClangErrorCaptureGroup.self,
+        ClangStatCacheCaptureGroup.self,
         CleanRemoveCaptureGroup.self,
         CleanTargetCaptureGroup.self,
         CodesignCaptureGroup.self,

@@ -45,9 +45,9 @@ struct ParsingTests {
         let uncapturedOutput = try uncapturedOutput(for: "clean_build_xcode_15_1")
 
         #if os(macOS)
-        #expect(uncapturedOutput == 39)
+        #expect(uncapturedOutput == 38)
         #else
-        #expect(uncapturedOutput == 55)
+        #expect(uncapturedOutput == 54)
         #endif
     }
 
@@ -60,9 +60,9 @@ struct ParsingTests {
         let uncapturedOutput = try uncapturedOutput(for: "large_xcodebuild_log")
 
         #if os(macOS)
-        #expect(uncapturedOutput == 1316)
+        #expect(uncapturedOutput == 1284)
         #else
-        #expect(uncapturedOutput == 1884)
+        #expect(uncapturedOutput == 1852)
         #endif
     }
 

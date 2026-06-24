@@ -22,6 +22,7 @@ protocol OutputRendering {
     func formatBuildDescription(group: BuildDescriptionCaptureGroup) -> String
     func formatBuildPhasePlumbing(group: BuildPhasePlumbingCaptureGroup) -> String
     func formatCheckDependencies() -> String
+    func formatClangStatCache(group: ClangStatCacheCaptureGroup) -> String
     func formatCleanRemove(group: CleanRemoveCaptureGroup) -> String
     func formatCodeSign(group: CodesignCaptureGroup) -> String
     func formatCodeSignFramework(group: CodesignFrameworkCaptureGroup) -> String
@@ -151,6 +152,10 @@ extension OutputRendering {
 
     func formatCheckDependencies() -> String {
         colored ? "Check dependencies".bold() : "Check dependencies"
+    }
+
+    func formatClangStatCache(group: ClangStatCacheCaptureGroup) -> String {
+        colored ? "ClangStatCache".bold() : "ClangStatCache"
     }
 
     func formatCleanRemove(group: CleanRemoveCaptureGroup) -> String {

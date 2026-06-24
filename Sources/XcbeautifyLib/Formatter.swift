@@ -55,6 +55,8 @@ package struct Formatter {
             return renderer.formatNonPCHClangCommand(group: group)
         case let group as ClangErrorCaptureGroup:
             return renderer.formatError(group: group)
+        case let group as ClangStatCacheCaptureGroup:
+            return renderer.formatClangStatCache(group: group)
         case let group as CleanRemoveCaptureGroup:
             return renderer.formatCleanRemove(group: group)
         case let group as CleanTargetCaptureGroup:

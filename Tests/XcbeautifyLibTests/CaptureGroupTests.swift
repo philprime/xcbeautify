@@ -323,6 +323,12 @@ struct CaptureGroupTests {
         #expect(groups[0] == input)
     }
 
+    @Test func matchClangStatCache() throws {
+        let input = "ClangStatCache /Applications/Xcode-26.5.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode-26.5.0.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk /Users/philip/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.5-23F73-688ef53f1462e2c8f657fdc38a81448f21837ebbc329da063fcadaf6b3048059.sdkstatcache"
+        let groups = try #require(ClangStatCacheCaptureGroup.regex.captureGroups(for: input))
+        #expect(groups.count == 1)
+    }
+
     @Test func matchExecuteExternalTool() throws {
         let input = "ExecuteExternalTool /Applications/Xcode-26.5.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version"
         let groups = try #require(ExecuteExternalToolCaptureGroup.regex.captureGroups(for: input))
