@@ -2,9 +2,13 @@
 [32;1mResolved source packages[0m
 [36;1mnote: [0mUsing codesigning identity override:
 [32;1mClean Succeeded[0m
+[1mPrepare packages[0m
 [36;1mnote: [0mUsing codesigning identity override:
+[1mComputeTargetDependencyGraph[0m
 [36;1mnote: [0mBuilding targets in dependency order
 [36;1mnote: [0mTarget dependency graph (11 targets)
+[1mGatherProvisioningInputs[0m
+[1mCreateBuildDescription[0m
 [[36mBackyardBirdsData[0m] [1mWrite Auxiliary File[0m BackyardBirdsData.modulemap
 [[36mLayeredArtworkLibrary_LayeredArtworkLibrary[0m] [1mWrite Auxiliary File[0m empty-LayeredArtworkLibrary_LayeredArtworkLibrary.plist
 [[36mLayeredArtworkLibrary_LayeredArtworkLibrary[0m] [1mCompile Asset Catalog[0m Assets.xcassets

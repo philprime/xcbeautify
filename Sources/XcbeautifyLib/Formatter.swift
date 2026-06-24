@@ -41,6 +41,8 @@ package struct Formatter {
             return renderer.formatAnalyze(group: group)
         case let group as AnalyzeTargetCaptureGroup:
             return renderer.formatTargetCommand(command: "Analyze", group: group)
+        case let group as BuildPhasePlumbingCaptureGroup:
+            return renderer.formatBuildPhasePlumbing(group: group)
         case let group as BuildTargetCaptureGroup:
             return renderer.formatTargetCommand(command: "Build", group: group)
         case is CheckDependenciesCaptureGroup:

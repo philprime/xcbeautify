@@ -16,6 +16,7 @@ package final class Parser {
         AggregateTargetCaptureGroup.self,
         AnalyzeCaptureGroup.self,
         AnalyzeTargetCaptureGroup.self,
+        BuildPhasePlumbingCaptureGroup.self,
         BuildTargetCaptureGroup.self,
         CheckDependenciesCaptureGroup.self,
         CheckDependenciesErrorsCaptureGroup.self,

@@ -308,4 +308,27 @@ struct CaptureGroupTests {
         #expect(SwiftTestingIssueCaptureGroup.regex.captureGroups(for: input) == nil)
         #expect(SwiftTestingIssueArgumentCaptureGroup.regex.captureGroups(for: input) != nil)
     }
+
+    @Test func matchBuildPhasePlumbing() throws {
+        let inputs = [
+            "ComputePackagePrebuildTargetDependencyGraph",
+            "Prepare packages",
+            "CreateBuildRequest",
+            "SendProjectDescription",
+            "CreateBuildOperation",
+            "ComputeTargetDependencyGraph",
+            "GatherProvisioningInputs",
+            "CreateBuildDescription",
+        ]
+        for input in inputs {
+            let groups = try #require(BuildPhasePlumbingCaptureGroup.regex.captureGroups(for: input), "Failed to match: \(input)")
+            #expect(groups.count == 1)
+            #expect(groups[0] == input)
+        }
+    }
+
+    @Test func noMatchBuildPhasePlumbing() {
+        #expect(BuildPhasePlumbingCaptureGroup.regex.captureGroups(for: "ComputeTargetDependencyGraph extra text") == nil)
+        #expect(BuildPhasePlumbingCaptureGroup.regex.captureGroups(for: "SomeOtherCommand") == nil)
+    }
 }

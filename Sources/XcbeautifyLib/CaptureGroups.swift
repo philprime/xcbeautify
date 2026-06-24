@@ -119,6 +119,20 @@ struct AnalyzeTargetCaptureGroup: TargetCaptureGroup {
     }
 }
 
+struct BuildPhasePlumbingCaptureGroup: CaptureGroup {
+    static let outputType: OutputType = .task
+
+    static let regex = XCRegex(pattern: #"^(ComputePackagePrebuildTargetDependencyGraph|Prepare packages|CreateBuildRequest|SendProjectDescription|CreateBuildOperation|ComputeTargetDependencyGraph|GatherProvisioningInputs|CreateBuildDescription)$"#)
+
+    let phaseName: String
+
+    init?(groups: [String]) {
+        assert(groups.count == 1)
+        guard let phaseName = groups[safe: 0] else { return nil }
+        self.phaseName = phaseName
+    }
+}
+
 struct BuildTargetCaptureGroup: TargetCaptureGroup {
     static let outputType: OutputType = .task
 
