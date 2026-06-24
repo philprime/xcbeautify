@@ -41,6 +41,7 @@ package final class Parser {
         CopyHeaderCaptureGroup.self,
         CopyPlistCaptureGroup.self,
         CopyStringsCaptureGroup.self,
+        CopySwiftLibsCaptureGroup.self,
         CpresourceCaptureGroup.self,
         CreateBuildDirectoryCaptureGroup.self,
         CreateUniversalBinaryCaptureGroup.self,

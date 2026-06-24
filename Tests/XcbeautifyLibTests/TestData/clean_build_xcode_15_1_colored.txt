@@ -505,6 +505,7 @@
 [[36mBackyard Birds[0m] [1mCopy[0m LayeredArtworkLibrary.framework -> LayeredArtworkLibrary.framework
 [[36mBackyard Birds[0m] [1mCopy[0m BackyardBirdsData.framework -> BackyardBirdsData.framework
 [[36mBackyard Birds[0m] [1mProcessing[0m Backyard-Birds-Info.plist
+[[36mBackyard Birds[0m] [1mCopySwiftLibs[0m Backyard\ Birds.app
 [[36mBackyard Birds[0m] [1mExtract App Intents Metadata[0m
 [36;1mnote: [0mMetadata extraction skipped. No AppIntents.framework dependency found. (in target 'Backyard Birds' from project 'Backyard Birds')
 [[36mBackyard Birds[0m] [1mValidate Embedded Binary[0m Widgets.appex

@@ -367,6 +367,15 @@ struct CaptureGroupTests {
         #expect(BuildPhasePlumbingCaptureGroup.regex.captureGroups(for: "SomeOtherCommand") == nil)
     }
 
+    @Test func matchCopySwiftLibs() throws {
+        let input = "CopySwiftLibs /Users/philip/Library/Developer/Xcode/DerivedData/Flinky.build/Products/Debug-iphonesimulator/Flinky.app (in target 'Flinky' from project 'Flinky')"
+        let groups = try #require(CopySwiftLibsCaptureGroup.regex.captureGroups(for: input))
+        let captureGroup = try #require(CopySwiftLibsCaptureGroup(groups: groups))
+        #expect(captureGroup.path == "/Users/philip/Library/Developer/Xcode/DerivedData/Flinky.build/Products/Debug-iphonesimulator/Flinky.app")
+        #expect(captureGroup.target == "Flinky")
+        #expect(captureGroup.project == "Flinky")
+    }
+
     @Test func matchConstructStubExecutorLinkFileList() throws {
         let input = "ConstructStubExecutorLinkFileList /Users/philip/Library/Developer/Xcode/DerivedData/Flinky.build/Debug-iphonesimulator/ShareExtension.build/ShareExtension-ExecutorLinkFileList-normal-arm64.txt (in target 'ShareExtension' from project 'Flinky')"
         let groups = try #require(ConstructStubExecutorLinkFileListCaptureGroup.regex.captureGroups(for: input))

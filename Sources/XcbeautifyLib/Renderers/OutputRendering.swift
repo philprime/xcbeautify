@@ -38,6 +38,7 @@ protocol OutputRendering {
     func formatConstructStubExecutorLinkFileList(group: ConstructStubExecutorLinkFileListCaptureGroup) -> String
     func formatCopy(group: any CopyCaptureGroup) -> String
     func formatCopyFiles(group: CopyFilesCaptureGroup) -> String
+    func formatCopySwiftLibs(group: CopySwiftLibsCaptureGroup) -> String
     func formatCoverageReport(group: GeneratedCoverageReportCaptureGroup) -> String
     func formatCreateBuildDirectory(group: CreateBuildDirectoryCaptureGroup) -> String?
     func formatCursor(group: CursorCaptureGroup) -> String?
@@ -225,6 +226,12 @@ extension OutputRendering {
         let firstFilename = group.firstFilename
         let secondFilename = group.secondFilename
         return colored ? "[\(target.cyan())] \("Copy".bold()) \(firstFilename) -> \(secondFilename)" : "[\(target)] Copy \(firstFilename) -> \(secondFilename)"
+    }
+
+    func formatCopySwiftLibs(group: CopySwiftLibsCaptureGroup) -> String {
+        let filename = URL(fileURLWithPath: group.path).lastPathComponent
+        let target = group.target
+        return colored ? "[\(target.cyan())] \("CopySwiftLibs".bold()) \(filename)" : "[\(target)] CopySwiftLibs \(filename)"
     }
 
     func formatCreateBuildDirectory(group: CreateBuildDirectoryCaptureGroup) -> String? {

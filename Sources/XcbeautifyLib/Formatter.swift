@@ -97,6 +97,8 @@ package struct Formatter {
             return renderer.formatCopy(group: group)
         case let group as CopyStringsCaptureGroup:
             return renderer.formatCopy(group: group)
+        case let group as CopySwiftLibsCaptureGroup:
+            return renderer.formatCopySwiftLibs(group: group)
         case let group as CpresourceCaptureGroup:
             return renderer.formatCopy(group: group)
         case let group as CreateBuildDirectoryCaptureGroup:
