@@ -67,6 +67,7 @@ package final class Parser {
         LDErrorCaptureGroup.self,
         LDWarningCaptureGroup.self,
         LibtoolCaptureGroup.self,
+        LinkAssetCatalogCaptureGroup.self,
         LinkerDuplicateSymbolsCaptureGroup.self,
         LinkerUndefinedSymbolLocationCaptureGroup.self,
         LinkerUndefinedSymbolsCaptureGroup.self,

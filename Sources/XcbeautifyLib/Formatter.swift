@@ -149,6 +149,8 @@ package struct Formatter {
             return renderer.formatLdWarning(group: group)
         case let group as LibtoolCaptureGroup:
             return renderer.formatLibtool(group: group)
+        case let group as LinkAssetCatalogCaptureGroup:
+            return renderer.formatLinkAssetCatalog(group: group)
         case let group as LinkerDuplicateSymbolsCaptureGroup:
             return renderer.formatLinkerDuplicateSymbolsError(group: group)
         case let group as LinkerUndefinedSymbolLocationCaptureGroup:

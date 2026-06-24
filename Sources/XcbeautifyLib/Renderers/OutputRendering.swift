@@ -60,6 +60,7 @@ protocol OutputRendering {
     func formatGenerateTAPI(group: GenerateTAPICaptureGroup) -> String
     func formatLdWarning(group: LDWarningCaptureGroup) -> String
     func formatLibtool(group: LibtoolCaptureGroup) -> String
+    func formatLinkAssetCatalog(group: LinkAssetCatalogCaptureGroup) -> String
     func formatLinkerDuplicateSymbolsError(group: LinkerDuplicateSymbolsCaptureGroup) -> String
     func formatLinkerUndefinedSymbolLocation(group: LinkerUndefinedSymbolLocationCaptureGroup) -> String?
     func formatLinkerUndefinedSymbolsError(group: LinkerUndefinedSymbolsCaptureGroup) -> String
@@ -300,6 +301,12 @@ extension OutputRendering {
         let filename = group.filename
         let target = group.target
         return colored ? "[\(target.cyan())] \("Building library".bold()) \(filename)" : "[\(target)] Building library \(filename)"
+    }
+
+    func formatLinkAssetCatalog(group: LinkAssetCatalogCaptureGroup) -> String {
+        let filename = URL(fileURLWithPath: group.path).lastPathComponent
+        let target = group.target
+        return colored ? "[\(target.cyan())] \("LinkAssetCatalog".bold()) \(filename)" : "[\(target)] LinkAssetCatalog \(filename)"
     }
 
     func formatLinkerUndefinedSymbolLocation(group: LinkerUndefinedSymbolLocationCaptureGroup) -> String? {

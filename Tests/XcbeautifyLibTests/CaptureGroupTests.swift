@@ -376,6 +376,15 @@ struct CaptureGroupTests {
         #expect(captureGroup.project == "Flinky")
     }
 
+    @Test func matchLinkAssetCatalog() throws {
+        let input = "LinkAssetCatalog /Volumes/Developer/techprimate/flinky-wip/Targets/App/Sources/Resources/Assets.xcassets (in target 'Flinky' from project 'Flinky')"
+        let groups = try #require(LinkAssetCatalogCaptureGroup.regex.captureGroups(for: input))
+        let captureGroup = try #require(LinkAssetCatalogCaptureGroup(groups: groups))
+        #expect(captureGroup.path == "/Volumes/Developer/techprimate/flinky-wip/Targets/App/Sources/Resources/Assets.xcassets")
+        #expect(captureGroup.target == "Flinky")
+        #expect(captureGroup.project == "Flinky")
+    }
+
     @Test func matchGenerateTAPI() throws {
         let input = "GenerateTAPI /Users/philip/Library/Developer/Xcode/DerivedData/Build/Intermediates.noindex/SentryPrivate.framework/SentryPrivate.tbd (in target 'SentryPrivate' from project 'Sentry')"
         let groups = try #require(GenerateTAPICaptureGroup.regex.captureGroups(for: input))
