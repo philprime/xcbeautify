@@ -261,6 +261,8 @@ package struct Formatter {
             return renderer.formatSwiftDriverJobDiscoveryCompiling(group: group)
         case let group as SwiftEmitModuleCaptureGroup:
             return renderer.formatSwiftEmitModule(group: group)
+        case let group as SwiftExplicitDependencyGeneratePcmCaptureGroup:
+            return renderer.formatSwiftExplicitDependencyGeneratePcm(group: group)
         case let group as SwiftMergeGeneratedHeadersCaptureGroup:
             return renderer.formatSwiftMergeGeneratedHeaders(group: group)
         case let group as TestingStartedCaptureGroup:

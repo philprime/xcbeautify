@@ -115,6 +115,7 @@ protocol OutputRendering {
     func formatTestSessionResults(group: TestSessionResultsCaptureGroup) -> String
     func formatSwiftDriverJobDiscoveryCompiling(group: SwiftDriverJobDiscoveryCompilingCaptureGroup) -> String?
     func formatSwiftEmitModule(group: SwiftEmitModuleCaptureGroup) -> String?
+    func formatSwiftExplicitDependencyGeneratePcm(group: SwiftExplicitDependencyGeneratePcmCaptureGroup) -> String?
     func formatSwiftMergeGeneratedHeaders(group: SwiftMergeGeneratedHeadersCaptureGroup) -> String?
     func formatSwiftTestingRunStarted(group: SwiftTestingRunStartedCaptureGroup) -> String
     func formatSwiftTestingRunCompletion(group: SwiftTestingRunCompletionCaptureGroup) -> String
@@ -704,6 +705,11 @@ extension OutputRendering {
     func formatTestSessionResults(group: TestSessionResultsCaptureGroup) -> String {
         let path = additionalLines()?.trimmingCharacters(in: .whitespaces) ?? ""
         return colored ? "\("Test session results:".bold()) \(path)" : "Test session results: \(path)"
+    }
+
+    func formatSwiftExplicitDependencyGeneratePcm(group: SwiftExplicitDependencyGeneratePcmCaptureGroup) -> String? {
+        let filename = group.path.lastPathComponent
+        return colored ? "\("Generate PCM".bold()) \(filename)" : "Generate PCM \(filename)"
     }
 
     func formatSwiftEmitModule(group: SwiftEmitModuleCaptureGroup) -> String? {

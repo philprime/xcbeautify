@@ -1928,6 +1928,22 @@ struct SwiftEmitModuleCaptureGroup: CaptureGroup {
     }
 }
 
+struct SwiftExplicitDependencyGeneratePcmCaptureGroup: CaptureGroup {
+    static let outputType: OutputType = .task
+
+    static let regex = XCRegex(pattern: #"^SwiftExplicitDependencyGeneratePcm (\S+) (.+)$"#)
+
+    let arch: String
+    let path: String
+
+    init?(groups: [String]) {
+        assert(groups.count == 2)
+        guard let arch = groups[safe: 0], let path = groups[safe: 1] else { return nil }
+        self.arch = arch
+        self.path = path
+    }
+}
+
 struct SwiftMergeGeneratedHeadersCaptureGroup: CaptureGroup {
     static let outputType: OutputType = .task
 

@@ -111,6 +111,7 @@ package final class Parser {
         SwiftDriverJobDiscoveryEmittingModuleCaptureGroup.self,
         SwiftDriverTargetCaptureGroup.self,
         SwiftEmitModuleCaptureGroup.self,
+        SwiftExplicitDependencyGeneratePcmCaptureGroup.self,
         SwiftMergeGeneratedHeadersCaptureGroup.self,
         SwiftTestingIssueArgumentCaptureGroup.self,
         SwiftTestingIssueCaptureGroup.self,
