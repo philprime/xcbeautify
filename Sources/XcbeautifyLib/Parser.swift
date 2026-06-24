@@ -36,6 +36,7 @@ package final class Parser {
         CompileWarningCaptureGroup.self,
         CompileXCStringsCaptureGroup.self,
         CompileXibCaptureGroup.self,
+        ConstructStubExecutorLinkFileListCaptureGroup.self,
         CopyFilesCaptureGroup.self,
         CopyHeaderCaptureGroup.self,
         CopyPlistCaptureGroup.self,

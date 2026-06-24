@@ -35,6 +35,7 @@ protocol OutputRendering {
     func formatCompileError(group: CompileErrorCaptureGroup) -> String
     func formatCompileXCStrings(group: CompileXCStringsCaptureGroup) -> String
     func formatCompileWarning(group: CompileWarningCaptureGroup) -> String
+    func formatConstructStubExecutorLinkFileList(group: ConstructStubExecutorLinkFileListCaptureGroup) -> String
     func formatCopy(group: any CopyCaptureGroup) -> String
     func formatCopyFiles(group: CopyFilesCaptureGroup) -> String
     func formatCoverageReport(group: GeneratedCoverageReportCaptureGroup) -> String
@@ -204,6 +205,12 @@ extension OutputRendering {
 
     func formatSwiftCompiling(group: SwiftCompilingCaptureGroup) -> String? {
         nil
+    }
+
+    func formatConstructStubExecutorLinkFileList(group: ConstructStubExecutorLinkFileListCaptureGroup) -> String {
+        let filename = URL(fileURLWithPath: group.path).lastPathComponent
+        let target = group.target
+        return colored ? "[\(target.cyan())] \("ConstructStubExecutorLinkFileList".bold()) \(filename)" : "[\(target)] ConstructStubExecutorLinkFileList \(filename)"
     }
 
     func formatCopy(group: any CopyCaptureGroup) -> String {

@@ -87,6 +87,8 @@ package struct Formatter {
             return renderer.formatCompileXCStrings(group: group)
         case let group as CompileXibCaptureGroup:
             return renderer.formatCompile(group: group)
+        case let group as ConstructStubExecutorLinkFileListCaptureGroup:
+            return renderer.formatConstructStubExecutorLinkFileList(group: group)
         case let group as CopyFilesCaptureGroup:
             return renderer.formatCopyFiles(group: group)
         case let group as CopyHeaderCaptureGroup:

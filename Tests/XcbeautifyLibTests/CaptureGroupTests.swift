@@ -367,6 +367,15 @@ struct CaptureGroupTests {
         #expect(BuildPhasePlumbingCaptureGroup.regex.captureGroups(for: "SomeOtherCommand") == nil)
     }
 
+    @Test func matchConstructStubExecutorLinkFileList() throws {
+        let input = "ConstructStubExecutorLinkFileList /Users/philip/Library/Developer/Xcode/DerivedData/Flinky.build/Debug-iphonesimulator/ShareExtension.build/ShareExtension-ExecutorLinkFileList-normal-arm64.txt (in target 'ShareExtension' from project 'Flinky')"
+        let groups = try #require(ConstructStubExecutorLinkFileListCaptureGroup.regex.captureGroups(for: input))
+        let captureGroup = try #require(ConstructStubExecutorLinkFileListCaptureGroup(groups: groups))
+        #expect(captureGroup.path == "/Users/philip/Library/Developer/Xcode/DerivedData/Flinky.build/Debug-iphonesimulator/ShareExtension.build/ShareExtension-ExecutorLinkFileList-normal-arm64.txt")
+        #expect(captureGroup.target == "ShareExtension")
+        #expect(captureGroup.project == "Flinky")
+    }
+
     @Test func matchGenerateTAPI() throws {
         let input = "GenerateTAPI /Users/philip/Library/Developer/Xcode/DerivedData/Build/Intermediates.noindex/SentryPrivate.framework/SentryPrivate.tbd (in target 'SentryPrivate' from project 'Sentry')"
         let groups = try #require(GenerateTAPICaptureGroup.regex.captureGroups(for: input))
